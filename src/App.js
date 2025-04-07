@@ -16,7 +16,13 @@ function App() {
   }
   const addTodo=(title, desc)=>{
     console.log("Adding to do"+title, desc);
-    let serial=todos[todos.length - 1].sno+1;
+    let serial;
+    if(todos.length ==0){
+      serial=0;
+    }else{
+      serial=todos[todos.length - 1].sno+1;
+    }
+  
     const myTodo={
       sno:serial,
       title: title,
@@ -26,24 +32,7 @@ function App() {
     setTodos([...todos,myTodo]);
   }
 
-  const [todos, setTodos]=useState( [
-    {
-      sno: 1,
-      title: "Go to Market",
-      desc: "You need to go to market !"
-    },
-    {
-      sno: 2,
-      title: "Go to Mall",
-      desc: "You need to go to Mall !"
-    },
-    {
-      sno: 3,
-      title: "Go to Shop",
-      desc: "You need to go to shop !"
-    }
-    
-  ]);
+  const [todos, setTodos]=useState( []);
   return (
     
       <>
