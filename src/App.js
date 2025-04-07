@@ -3,6 +3,7 @@ import './App.css';
 import Header from './mycomponent/header';
 import Footer from './mycomponent/Footer';
 import ToDos from './mycomponent/ToDos';
+import AddTodo from './mycomponent/AddTodo';
 import React, {useState} from 'react';
 
 function App() {
@@ -13,6 +14,18 @@ function App() {
 
     }));
   }
+  const addTodo=(title, desc)=>{
+    console.log("Adding to do"+title, desc);
+    let serial=todos[todos.length - 1].sno+1;
+    const myTodo={
+      sno:serial,
+      title: title,
+      desc:desc,
+
+    }
+    setTodos([...todos,myTodo]);
+  }
+
   const [todos, setTodos]=useState( [
     {
       sno: 1,
@@ -35,6 +48,7 @@ function App() {
     
       <>
       <Header title="To Do List"/>
+      <AddTodo addTodo={addTodo}/>
       <ToDos todos={todos} onDelete={onDelete}/>
       <Footer/>
       
